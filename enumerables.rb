@@ -29,8 +29,9 @@ spiciest_foods(spicy_foods)
 # HINT: you can use * with a string to produce the correct number of 🌶 emoji. 
 # "hello" * 3 == "hellohellohello"
 def print_spicy_foods(spicy_foods)
-  # heat = "🌶"
-  # binding.pry
+  spicy_foods.map do |spicy_food|
+  puts  "#{spicy_food[:name]} (#{spicy_food[:cuisine]}) | Heat Level: #{'🌶' * spicy_food[:heat_level]}"
+  end
 end
 print_spicy_foods(spicy_foods)
 # given an array of spicy foods and a string representing a cuisine, **return a single hash**  
@@ -52,11 +53,16 @@ sort_by_heat(spicy_foods)
 # Buffalo Wings (American) | Heat Level: 🌶🌶🌶
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
+  filteredSpice = spicy_foods.filter{|spice| spice[:heat_level] > 5}
+  filteredSpice.map do |spicy_food|
+  puts "#{spicy_food[:name]} (#{spicy_food[:cuisine]}) | Heat Level: #{'🌶' * spicy_food[:heat_level]}" 
+  end
 end
+print_spiciest_foods(spicy_foods)
 
 # given an array of spicy foods, return an integer representing 
 # the average heat level of all the spicy foods in the array
 def average_heat_level(spicy_foods)
-  puts spicy_foods.map{|spice| spice[:heat_level]}
+  spicy_foods.map{|spice| spice[:heat_level]}.sum / spicy_foods.length
 end
 average_heat_level(spicy_foods)
